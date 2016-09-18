@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HTMLWidget name="utmFix" formatNumber="3" 
+	localization="none"
+	creator="login2030"
+	defaultWidth="50"
+	defaultHeight="50"
+>
+<parameters>
+	<separator/>
+	<url name="url" label="Партнерская ссылка CPA сети" defaultValue="http://Ваша ссылка.ru" />
+	<separator/>
+	<info label="Задайте подсказку 'utm-link' (без ковычек) для ифрейма или ссылки"/>
+	<separator/>
+	<info label="Полная инструкция находится на GitHub (https://github.com/CenterAffiliatePrograms/utmFix)" linkURL="https://github.com/CenterAffiliatePrograms/utmFix"/>
+	<builtIn name="width"/>
+	<builtIn name="height"/>
+	<builtIn name="itemUID"/>
+</parameters>
+
+<headHTML></headHTML>
+<pageItemHTML></pageItemHTML>
+<bodyEndHTML>
+	<![CDATA[
+	<script type="text/javascript">
+		window.addEventListener('load', function() {
+			var utm = window.location.search;
+			var link = '{param_url}';
+			var attr = '';
+			$('[title=utm-link]').each(function(i, el) {
+				var $this = $(this);
+				$this.attr('title', '');
+				if ($this.is('iframe')) {
+					attr = 'src';
+					$this.attr(attr, link + utm);
+				} else if ($this.is('a')) {
+					attr = 'href';
+					$this.attr(attr, $this.attr(attr) + utm);
+				} else {
+					if ($this.find('iframe').length > 0) {
+						attr = 'src';
+						$this.find('iframe').attr(attr, link + utm);
+					}
+				}
+			});
+		});
+	</script>
+	]]>
+</bodyEndHTML>
+</HTMLWidget>
