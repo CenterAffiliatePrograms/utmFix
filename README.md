@@ -54,7 +54,7 @@
 Открываем его и копируем его содержимое в head страницы (Инструкция как это сделать есть на форуме в разделе ***"Adobe Muse- вопросы и ответы -> Как вставить в Muse свои html, css и js"***)
 + Сразу после скопированного кода вызываем наш плагин
 ```
-document.addEventListener('load', function() {
+window.addEventListener('load', function() {
   $([title=utm-link]).utmFix({
     link: 'Ваша партнерская ссылка'
   });
