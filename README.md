@@ -55,7 +55,7 @@
 + Сразу после скопированного кода вызываем наш плагин
 ```
 window.addEventListener('load', function() {
-  $([title=utm-link]).utmFix({
+  $('[title=utm-link]').utmFix({
     link: 'Ваша партнерская ссылка'
   });
 });
